@@ -1,0 +1,36 @@
+{
+  "name": "replace_diggle",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node esbuild.js",
+    "push": "clasp push",
+    "open": "clasp open",
+    "deploy:gas": "pnpm build && pnpm push && clasp open",
+    "d": "pnpm deploy:gas",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "check": "biome check --write .",
+    "cd": "pnpm check && pnpm deploy:gas"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/google-apps-script": "^1.0.83",
+    "esbuild": "^0.20.1",
+    "esbuild-gas-plugin": "^0.8.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@google/clasp": "^2.4.2",
+    "google-spreadsheet": "^3.3.0"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "esbuild"
+    ],
+    "onlyBuiltDependencies": [
+      "@biomejs/biome"
+    ]
+  }
+}
